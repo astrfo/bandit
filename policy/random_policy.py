@@ -1,6 +1,6 @@
 import numpy as np
 
-class random_policy(object):
+class RandomPolicy(object):
     def __init__(self, K):
         self.K = K
 
