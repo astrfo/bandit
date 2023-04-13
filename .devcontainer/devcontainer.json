@@ -1,19 +1,20 @@
 {
     "name": "bandit",
-    "dockerFile": "Dockerfile",
+    "build": {
+        "dockerfile": "Dockerfile",
+        "context": "..",
+        "remoteEnv": {
+            "LOCAL_WORKSPACE_FOLDER": "${localWorkspaceFolder}"
+        }
+    },
     "customizations": {
         "vscode": {
             "extensions": [
-                "ms-python.python"
-            ],
-            "mounts": [
-                "source=.,target=/workspace,type=bind,consistency=cached"
-            ],
-            "env": {
-                "PYTHONPATH": "/home/astrfo"
-            }
+                "ms-python.python",
+                "ms-python.vscode-pylance"
+            ]
         }
     },
-    "postCreateCommand": "pip install -r requirements.txt",
+    "postCreateCommand": "pip install --upgrade pip && pip install -r requirements.txt",
     "remoteUser": "vscode"
 }
