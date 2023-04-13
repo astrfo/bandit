@@ -2,8 +2,8 @@ import os
 from datetime import datetime
 import numpy as np
 from env import Environment
-from policy.e_greedy import e_greedy
-from policy.random_policy import random_policy
+from policy.e_greedy import EpsilonGreedy
+from policy.random_policy import RandomPolicy
 from policy.ts import TS
 from policy.ucb1 import UCB1
 from policy.ucb1_tuned import UCB1_tuned
@@ -12,7 +12,7 @@ warnings.simplefilter('ignore', category=RuntimeWarning)
 
 class Simulator(object):
     def __init__(self, trial, step, K):
-        self.policy = [e_greedy(K), TS(K), UCB1(K), UCB1_tuned(K)]
+        self.policy = [EpsilonGreedy(K), TS(K), UCB1(K), UCB1_tuned(K)]
         self.trial = trial
         self.step = step
         self.K = K
